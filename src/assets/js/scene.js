@@ -25,11 +25,11 @@ export default class SnakeScene extends Scene {
   }
 
   /**
-   * This is where all the game logic goes. This is equivalent to the
+   * This is where all the game logic goes. This is similar to the
    * autonomousPeriodic and teleopPeriodic functions in robot code
    */
   update(time, delta) {
-    
+
   }
 
 }
