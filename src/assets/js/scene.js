@@ -1,6 +1,6 @@
-import { Scene, Math } from 'phaser';
+import { Scene } from 'phaser';
 import Ship from './ship';
-import Snake from './snake';
+import Keyboard from './keyboard';
 
 export default class SnakeScene extends Scene {
 
@@ -21,9 +21,7 @@ export default class SnakeScene extends Scene {
     this.add.tileSprite(0, 0, 1600, 1200, 'space');
     this.shipSpeedLabel = this.add.text(10, 10, '', { font: '16px Courier', fill: '#00ff00' });
     this.ship = new Ship(this, 400, 300);
-    // this.snake = new Snake(this, , 8);
-    // //  Create our keyboard controls
-    // this.cursors = this.input.keyboard.createCursorKeys();
+    this.keyboard = new Keyboard(this);
   }
 
   /**
@@ -31,7 +29,7 @@ export default class SnakeScene extends Scene {
    * autonomousPeriodic and teleopPeriodic functions in robot code
    */
   update(time, delta) {
-   
+    
   }
 
 }
