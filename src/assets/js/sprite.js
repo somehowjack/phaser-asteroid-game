@@ -3,10 +3,30 @@ export default class Sprite {
   constructor(scene, x, y, image) {
     this.scene = scene;
     this.sprite = scene.physics.add.image(x, y, image);
+    this.destroyed = false;
   }
 
   wrap() {
-    this.scene.physics.world.wrap(this.sprite);
+    this.scene.physics.world.wrap(this.sprite, 32);
+  }
+
+  destroy() {
+    this.destroyed = true;
+    this.sprite.destroy(true);
+  }
+
+  isDestroyed() {
+    return this.destroyed;
+  }
+
+  setVisible(visible) {
+    if (!this.isDestroyed()) {
+      this.sprite.setVisible(visible);
+    }
+  }
+
+  isVisible() {
+    return this.sprite.visible;
   }
 
   /**
@@ -19,12 +39,17 @@ export default class Sprite {
    * @param {Number} drag 
    */
   setDrag(useDamping, drag) {
-    this.sprite.setDamping(useDamping);
-    this.sprite.setDrag(drag);
+
+    if (!this.isDestroyed()) {
+      this.sprite.setDamping(useDamping);
+      this.sprite.setDrag(drag);
+    }
   }
 
   setAcceleration(x, y) {
-    this.sprite.setAcceleration(x, y);
+    if (!this.isDestroyed()) {
+      this.sprite.setAcceleration(x, y);
+    }
   }
 
   /**
@@ -33,11 +58,15 @@ export default class Sprite {
    * @param {Number} acceleration 
    */
   setForwardAcceleration(acceleration) {
-    
+    if (!this.isDestroyed()) {
+
+    }
   }
 
   setVelocity(x, y) {
-    this.sprite.setVelocity(x, y);
+    if (!this.isDestroyed()) {
+      this.sprite.setVelocity(x, y);
+    }
   }
 
   /**
@@ -47,11 +76,15 @@ export default class Sprite {
    * @param {Number} velocity 
    */
   setForwardVelocity(velocity) {
-    
+    if (!this.isDestroyed()) {
+      
+    }
   }
 
   setAngularVelocity(velocity) {
-    this.sprite.setAngularVelocity(velocity);
+    if (!this.isDestroyed()) {
+      this.sprite.setAngularVelocity(velocity);
+    }
   }
 
   getRotation() {
@@ -63,6 +96,8 @@ export default class Sprite {
   }
 
   setMaxVelocity(velocity) {
-    this.sprite.setMaxVelocity(velocity);
+    if (!this.isDestroyed()) {
+      this.sprite.setMaxVelocity(velocity);
+    }
   }
 }

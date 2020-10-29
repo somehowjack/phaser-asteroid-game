@@ -30,6 +30,7 @@ export default class SnakeScene extends Scene {
    */
   update(time, delta) {
 
+
   }
 
 }
