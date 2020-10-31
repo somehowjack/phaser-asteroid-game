@@ -49,7 +49,7 @@ export default class SnakeScene extends Scene {
     this.ship.setForwardAcceleration(forw);
     this.ship.setAngularVelocity(turnw);
     this.ship.wrap();
-    this.ship.setDrag(true, .985);
+    this.ship.setDrag(true, .9775);
 
   }
 
