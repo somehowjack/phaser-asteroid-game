@@ -29,7 +29,27 @@ export default class SnakeScene extends Scene {
    * autonomousPeriodic and teleopPeriodic functions in robot code
    */
   update(time, delta) {
-
+    let acc = 200;
+    let turn = 180;
+    let forw = 0;
+    let turnw = 0;
+    if (this.keyboard.isUpPressed()){
+        forw += acc;
+    }
+    else if (this.keyboard.isDownPressed()){
+        forw -= acc;
+    }
+    
+    if (this.keyboard.isLeftPressed()){
+        turnw -= turn;
+    }
+    if (this.keyboard.isRightPressed()){
+        turnw += turn;
+    }
+    this.ship.setForwardAcceleration(forw);
+    this.ship.setAngularVelocity(turnw);
+    this.ship.wrap();
+    this.ship.setDrag(true, .985);
 
   }
 

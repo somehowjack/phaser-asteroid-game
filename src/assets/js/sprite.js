@@ -57,9 +57,9 @@ export default class Sprite {
    * 
    * @param {Number} acceleration 
    */
-  setForwardAcceleration(acceleration) {
+  setForwardAcceleration(acc) {
     if (!this.isDestroyed()) {
-
+        this.setAcceleration(Math.cos(this.getRotation()) * acc, Math.sin(this.getRotation()) * acc);
     }
   }
 
