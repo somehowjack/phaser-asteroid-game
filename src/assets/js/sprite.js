@@ -75,9 +75,9 @@ export default class Sprite {
    * 
    * @param {Number} velocity 
    */
-  setForwardVelocity(velocity) {
+  setForwardVelocity(vel) {
     if (!this.isDestroyed()) {
-      
+      this.setVelocity(Math.cos(this.getRotation()) * vel, Math.sin(this.getRotation()) * vel);
     }
   }
 

@@ -1,5 +1,6 @@
 import { Scene } from 'phaser';
 import Ship from './ship';
+import Bullet from './bullet';
 import Keyboard from './keyboard';
 
 export default class SnakeScene extends Scene {
@@ -46,6 +47,13 @@ export default class SnakeScene extends Scene {
     if (this.keyboard.isRightPressed()){
         turnw += turn;
     }
+
+    if (this.keyboard.isSpacePressed()){
+        this.bullet = new Bullet(this, this.ship.sprite.x, this.ship.sprite.y);
+        this.bullet.sprite.rotation = this.ship.getRotation();
+        this.bullet.setForwardVelocity(100);
+    }
+
     this.ship.setForwardAcceleration(forw);
     this.ship.setAngularVelocity(turnw);
     this.ship.wrap();
