@@ -4,6 +4,7 @@ export default class Sprite {
     this.scene = scene;
     this.sprite = scene.physics.add.image(x, y, image);
     this.destroyed = false;
+    this.spawnTime = 0.0;
   }
 
   wrap() {
@@ -27,6 +28,16 @@ export default class Sprite {
 
   isVisible() {
     return this.sprite.visible;
+  }
+
+  setSpawnTime(time){
+    this.spawnTime = time;
+  }
+
+  doIDie(time){
+      if ((time - this.spawnTime) > 50){
+          this.destroy();
+      }
   }
 
   /**

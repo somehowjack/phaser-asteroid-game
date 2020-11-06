@@ -52,12 +52,16 @@ export default class SnakeScene extends Scene {
         this.bullet = new Bullet(this, this.ship.sprite.x, this.ship.sprite.y);
         this.bullet.sprite.rotation = this.ship.getRotation();
         this.bullet.setForwardVelocity(100);
+        this.bullet.setSpawnTime(time);
+        this.bullet.doIDie(time);
+        
     }
 
     this.ship.setForwardAcceleration(forw);
     this.ship.setAngularVelocity(turnw);
     this.ship.wrap();
     this.ship.setDrag(true, .9775);
+   
 
   }
 
